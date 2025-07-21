@@ -1,68 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <title>SORRY, ma chérie</title>
-  <style>
-    body {
-      margin: 0; padding: 40px;
-      height: 100vh;
-      background: linear-gradient(135deg, #ffd3e0, #ffe9f0);
-      font-family: 'Arial', sans-serif;
-      color: #c2185b;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      gap: 20px;
-    }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 30px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-    }
-    #poem {
-      font-size: 1.4em;
-      max-width: 600px;
-      line-height: 1.5;
-      white-space: pre-line;
-    }
-    button {
-      background-color: #c2185b;
-      border: none;
-      color: white;
-      padding: 12px 25px;
-      font-size: 1em;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #9e1545;
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>SORRY, ma chérie</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: linear-gradient(135deg, #ffd3e0, #ffe9f0);
+    font-family: Arial, sans-serif;
+    color: #c2185b;
+    display: flex;
+    justify-content: center; /* horizontal center */
+    align-items: center;     /* vertical center */
+    text-align: center;
+  }
+  #container {
+    max-width: 600px;
+    width: 90vw;
+  }
+  h1 {
+    margin: 0;
+    font-size: 3.5em;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  }
+  #poem {
+    margin-top: 5px;
+    font-size: 1.4em;
+    line-height: 1.5;
+    white-space: pre-line;
+    user-select: text;
+  }
+  #buttons {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  button {
+    background-color: #c2185b;
+    border: none;
+    color: white;
+    padding: 12px 28px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  button:hover {
+    background-color: #9e1545;
+  }
+  audio {
+    display: none;
+  }
+</style>
 </head>
 <body>
 
-  <h1>SORRY, ma chérie</h1>
+  <div id="container">
+    <h1>SORRY, ma chérie</h1>
+    <div id="poem">
+      I love you without knowing how, or when, or from where.<br>
+      I love you straightforwardly, without complexities or pride;<br>
+      so I love you because I know no other way.<br>
+      Than this: where I does not exist, nor you,<br>
+      so close that your hand on my chest is my hand,<br>
+      so close that your eyes close as I fall asleep.
+    </div>
 
-  <div id="poem">
-I love you without knowing how, or when, or from where.<br>
-I love you straightforwardly, without complexities or pride;<br>
-so I love you because I know no other way.<br>
-Than this: where I does not exist, nor you,<br>
-so close that your hand on my chest is my hand,<br>
-so close that your eyes close as I fall asleep.
+    <div id="buttons">
+      <button id="translateBtn">Traduzir</button>
+      <button id="musicBtn">Tocar Música</button>
+    </div>
   </div>
 
-  <div>
-    <button id="translateBtn">Traduzir</button>
-    <button id="musicBtn">Pausar Música</button>
-  </div>
-
-  <audio id="audio" autoplay loop>
+  <audio id="audio" loop>
     <source src="poa.mp3" type="audio/mpeg" />
     Seu navegador não suporta áudio.
   </audio>
@@ -88,7 +102,7 @@ tão perto que sua mão no meu peito é minha mão,<br>
 tão perto que seus olhos fecham enquanto eu adormeço.`;
 
     let translated = false;
-    let playing = true;
+    let playing = false;
 
     translateBtn.addEventListener('click', () => {
       if (!translated) {
@@ -102,21 +116,14 @@ tão perto que seus olhos fecham enquanto eu adormeço.`;
     });
 
     musicBtn.addEventListener('click', () => {
-      if (playing) {
-        audio.pause();
-        musicBtn.textContent = 'Tocar Música';
-      } else {
+      if (!playing) {
         audio.play();
         musicBtn.textContent = 'Pausar Música';
+      } else {
+        audio.pause();
+        musicBtn.textContent = 'Tocar Música';
       }
       playing = !playing;
-    });
-
-    // Tenta tocar música automaticamente
-    window.addEventListener("DOMContentLoaded", () => {
-      audio.play().catch(() => {
-        alert("Clique na tela para ouvir a música 🎵");
-      });
     });
   </script>
 
