@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>SORRY, ma chérie</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd3e0, #ffe9f0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #c2185b;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SORRY, ma chérie :/</h1>
+
+  <audio autoplay loop>
+    <source src="poa.mp3" type="audio/mpeg" />
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const audio = document.querySelector("audio");
+      audio.play().catch(() => {
+        alert("Clique na tela para ouvir a música 🎵");
+      });
+    });
+  </script>
+
+</body>
+</html>
