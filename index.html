@@ -2,151 +2,114 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <title>SORRY, ma chérie</title>
+  <title>Você voltou aqui?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Fonte Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
+
   <style>
+    /* Reset e base */
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       background: linear-gradient(135deg, #ffd3e0, #ffe9f0);
-      font-family: Arial, sans-serif;
+      font-family: 'Quicksand', sans-serif;
       color: #c2185b;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
 
     #container {
       max-width: 600px;
       width: 90vw;
-    }
-
-    h1 {
-      margin: 10px 0;
-      font-size: 2.8em;
-      line-height: 1.1;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-    }
-
-    #top-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .small-btn {
-      background-color: #c2185b;
-      border: none;
-      color: white;
-      padding: 4px 10px;
-      font-size: 0.8em;
-      border-radius: 6px;
-      cursor: pointer;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      transition: background-color 0.3s ease;
-    }
-
-    .small-btn:hover {
-      background-color: #9e1545;
-    }
-
-    #poem {
-      margin-top: 5px;
-      font-size: 1.2em;
-      line-height: 1.5;
-      white-space: pre-line;
+      padding: 30px 20px;
+      background: #fff0f5;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(194, 31, 86, 0.2);
       user-select: text;
     }
 
-    #next-page {
-      margin-top: 30px;
+    h1 {
+      margin-bottom: 25px;
+      font-size: 2.6em;
+      line-height: 1.1;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.12);
+    }
+
+    #message {
+      font-size: 1.25em;
+      line-height: 1.6;
+      white-space: pre-line;
+      margin-bottom: 35px;
+    }
+
+    .btn {
       background-color: #c2185b;
-      border: none;
       color: white;
-      padding: 10px 22px;
-      font-size: 1em;
-      border-radius: 8px;
+      border: none;
+      padding: 14px 28px;
+      font-size: 1.1em;
+      border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      transition: background-color 0.3s ease;
+      box-shadow: 0 6px 12px rgba(194, 31, 86, 0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      outline-offset: 3px;
     }
 
-    #next-page:hover {
+    .btn:hover,
+    .btn:focus {
       background-color: #9e1545;
+      transform: scale(1.05);
+      outline: none;
+      box-shadow: 0 8px 18px rgba(194, 31, 86, 0.6);
     }
 
-    audio {
-      display: none;
+    /* Responsividade */
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 2em;
+      }
+      #message {
+        font-size: 1.1em;
+      }
+      .btn {
+        padding: 12px 24px;
+        font-size: 1em;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div id="container">
+  <main id="container" role="main">
+    <h1>Você voltou aqui?</h1>
 
-    <div id="top-buttons">
-      <button id="translateBtn" class="small-btn">Traduzir</button>
-      <button id="listenBtn" class="small-btn">Ouvir</button>
-    </div>
+    <section id="message">
+      Isso significa que está pensando em mim.<br>
+      Que ainda sente algo.<br>
+      Que talvez, mesmo com tudo...<br>
+      Você ainda gosta de mim.<br><br>
+      E isso... me dá esperanças.
+    </section>
 
-    <h1>SORRY, ma chérie</h1>
-
-    <div id="poem">
-      I love you without knowing how, or when, or from where.<br>
-      I love you straightforwardly, without complexities or pride;<br>
-      so I love you because I know no other way, than this.<br>
-      so close that your hand on my chest is my hand<br>
-      so close that when you close your eyes I fall asleep.
-    </div>
-
-    <button id="next-page">Próxima Página</button>
-  </div>
-
-  <audio id="bgAudio" loop>
-    <source src="audio.mp3" type="audio/mpeg" />
-    Seu navegador não suporta áudio.
-  </audio>
-
-  <script>
-    const translateBtn = document.getElementById('translateBtn');
-    const listenBtn = document.getElementById('listenBtn');
-    const poemDiv = document.getElementById('poem');
-    const audio = document.getElementById('bgAudio');
-    const nextPage = document.getElementById('next-page');
-
-    const englishText = `I love you without knowing how, or when, or from where.<br>
-I love you straightforwardly, without complexities or pride;<br>
-so I love you because I know no other way, than this.<br>
-so close that your hand on my chest is my hand<br>
-so close that when you close your eyes I fall asleep.`;
-
-    const portugueseText = `Eu te amo sem saber como, nem quando, nem de onde.<br>
-Eu te amo diretamente, sem complexidades ou orgulho;<br>
-então eu te amo porque não conheço outro jeito, senão este.<br>
-tão perto que sua mão no meu peito é minha mão<br>
-tão perto que quando você fecha os olhos, eu adormeço.`;
-
-    let translated = false;
-
-    translateBtn.addEventListener('click', () => {
-      poemDiv.innerHTML = translated ? englishText : portugueseText;
-      translateBtn.textContent = translated ? 'Traduzir' : 'Inglês';
-      translated = !translated;
-    });
-
-    listenBtn.addEventListener('click', () => {
-      audio.play();
-      listenBtn.textContent = '🎵 Tocando...';
-      listenBtn.disabled = true;
-    });
-
-    nextPage.addEventListener('click', () => {
-      window.location.href = 'page2.html';
-    });
-  </script>
+    <button class="btn" aria-label="Passar para a próxima página se no fundo ainda quer a gente juntos" onclick="window.location.href='page2.html'">
+      💌 Passe aí... se no fundo ainda quer a gente juntos
+    </button>
+  </main>
 
 </body>
 </html>

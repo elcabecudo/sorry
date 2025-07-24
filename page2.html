@@ -2,112 +2,115 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
+  <title>Estou esperando por você</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Future Days</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
+
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      background-color: black;
-      font-family: 'Arial', sans-serif;
-      overflow: hidden;
-    }
-
-    #cover {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(135deg, #1a001a, #000000);
-      color: #fff;
+      background: linear-gradient(135deg, #ffe4e6, #ffd3d8);
+      font-family: 'Quicksand', sans-serif;
+      color: #b71c46;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 2;
       text-align: center;
       padding: 20px;
+      animation: fadeIn 1s ease forwards;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    #cover h1 {
-      font-size: 2.2em;
-      color: #ff80ab;
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    #container {
+      max-width: 600px;
+      width: 90vw;
+      background: #fff0f5;
+      border-radius: 15px;
+      padding: 30px 25px;
+      box-shadow: 0 8px 20px rgba(183, 28, 70, 0.3);
+      user-select: text;
+    }
+
+    h1 {
+      font-size: 2.4em;
       margin-bottom: 20px;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
 
-    #cover button {
+    p {
+      font-size: 1.3em;
+      line-height: 1.6;
+      margin-bottom: 35px;
+      white-space: pre-line;
+    }
+
+    .btn {
       background-color: #c2185b;
-      border: none;
       color: white;
+      border: none;
       padding: 14px 28px;
       font-size: 1.1em;
       border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: background-color 0.3s ease;
+      box-shadow: 0 6px 12px rgba(194, 31, 86, 0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      outline-offset: 3px;
     }
 
-    #cover button:hover {
+    .btn:hover,
+    .btn:focus {
       background-color: #9e1545;
+      transform: scale(1.05);
+      outline: none;
+      box-shadow: 0 8px 18px rgba(194, 31, 86, 0.6);
     }
 
-    video {
-      max-width: 100vw;
-      max-height: 100vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto;
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    #backButton {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background-color: rgba(194, 24, 91, 0.8);
-      border: none;
-      color: white;
-      padding: 6px 12px;
-      font-size: 0.85em;
-      border-radius: 6px;
-      cursor: pointer;
-      z-index: 3;
-    }
-
-    #backButton:hover {
-      background-color: rgba(158, 21, 69, 0.9);
+    /* Responsividade */
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 2em;
+      }
+      p {
+        font-size: 1.1em;
+      }
+      .btn {
+        padding: 12px 24px;
+        font-size: 1em;
+      }
     }
   </style>
 </head>
 <body>
 
-  <button id="backButton" onclick="location.href='index.html'">⟵ Voltar</button>
+  <main id="container" role="main">
+    <h1>Estou esperando por você...</h1>
 
-  <div id="cover">
-    <h1>COME BACK...<br></h1>
-    <button onclick="startVideo()">▶ Assistir</button>
-  </div>
+    <p>
+      Eu não desisti de você,<br>
+      ainda quero que seja você.<br><br>
 
-  <video id="video">
-    <source src="video.mp4" type="video/mp4">
-    Seu navegador não suporta vídeo.
-  </video>
+      Estou te amando em silêncio, princesa.<br><br>
 
-  <script>
-    function startVideo() {
-      const video = document.getElementById('video');
-      const cover = document.getElementById('cover');
+      Quero ser um novo homem para você,<br>
+      quero ser alguém melhor para você,<br>
+      quero fazer valer a pena...
+    </p>
 
-      cover.style.display = 'none';
-      video.play();
-    }
-  </script>
+    <button class="btn" aria-label="Vamos tentar mais uma vez" onclick="window.location.href='page3.html'">
+      Vamos tentar mais uma vez?
+    </button>
+  </main>
 
 </body>
 </html>
